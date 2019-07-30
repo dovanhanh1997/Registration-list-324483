@@ -1,5 +1,6 @@
 <?php
-$filePath = "data.json";
+define("filePath","data.json");
+//$filePath = "data.json";
 include 'function.php'
 ?>
 
@@ -16,7 +17,7 @@ include 'function.php'
 <div id="content">
     <div id="regist-form">
         <h3>REGISTRATION FORM</h3>
-        <form action="" method="post">
+        <form action="registration-list.php" method="post">
 
             Name: <input type="text" name="username"> <span style="color: red">*</span><br><br>
             E-mail: <input type="text" name="email"> <span style="color: red">*</span><br><br>
@@ -25,20 +26,20 @@ include 'function.php'
             <br><br>
             <span style="color: red">* Required Field</span><br>
         </form>
-
         <?php
 
             if ($_SERVER['REQUEST_METHOD'] == "POST"){
                 $name = $_POST['username'];
-                $email = $_SERVER['email'];
+                $email = $_POST['email'];
                 $phone = $_POST['phone'];
 
                 $register = addUser($name,$email,$phone);
-                saveFileJason($register,$filePath);
+                saveFileJason($register,filePath);
             }
 
         ?>
     </div>
+
 </div>
 </body>
 </html>

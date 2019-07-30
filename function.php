@@ -8,19 +8,18 @@ function readFileJason($filePath)
 
 function saveFileJason($data, $filePath)
 {
-    $getData = file_get_contents($filePath);
-    $dataDecode = json_decode($getData, true);
-    $array = [];
-    array_push($array, $data);
-    $dataNew = json_encode($array);
+    $dataDecode = readFileJason($filePath);
+    array_push($dataDecode, $data);
+    $dataNew = json_encode($dataDecode);
     file_put_contents($filePath, $dataNew);
 }
 
-function addUser ($user,$email,$phone){
+function addUser($user, $email, $phone)
+{
     $info = [
-      "Name: "=> $user,
-      "Email: "=> $email,
-      "Phone: "=> $phone
+        "Name: " => $user,
+        "Email: " => $email,
+        "Phone: " => $phone
     ];
 
     return $info;
